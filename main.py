@@ -1,4 +1,5 @@
 import lex as lex
+# names of tokens defined in a list of token
 tokens = (
    'NUMBER',
    'PLUS',
@@ -30,6 +31,7 @@ tokens = (
    'WHILE',
    'MAIN',
 )
+# reserved words are used to prevent parser from interpreting words like 'if' as variables
 reserved = {
    'if'    : 'IF',
    'elseif': 'ELSEIF',
@@ -44,12 +46,13 @@ reserved = {
    '(\&\&|\|\|)' : 'ANDOR',
    '<<'    : 'DLA',
 }
+# precedence defined for arithmetic operation
 precedence = ( 
     ('left','PLUS','MINUS'), 
     ('left','TIMES','DIVIDE'), 
     ('right','UMINUS'), 
     )
-# Regular expression rules for simple tokens
+# Regular expression for simple tokens
 t_PLUS    = r'\+'
 t_MINUS   = r'-'
 t_TIMES   = r'\*'
@@ -66,8 +69,8 @@ t_MAIN    = r'main'
 t_SEMICOLON= r';'
 t_RCURLY  = r'}'
 t_LCURLY  = r'{'
-# A regular expression rule with some action code
 
+# A regular expression rule with some action code
 
 
 def t_DLA(t):
@@ -140,7 +143,7 @@ lexer = lex.lex()
 import yacc as yacc
 
 names = {}
-
+# from here we start to create a tree structure of the code so that we can interpret it later
 def p_main_start(p):
     'mainstart : TYPEINT MAIN LPAREN RPAREN LCURLY code RCURLY'
     p[0] = ('main',p[6])
@@ -281,7 +284,7 @@ def p_error(p):
 
 # Build the parser
 yacc.yacc()
-
+# a dictionary of dictionary to keep variables in a scope
 variablecounter = 0
 emptyDict = {}
 
