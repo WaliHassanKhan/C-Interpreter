@@ -1,0 +1,27 @@
+int main(){
+	int x =5;
+	int y = 10;
+	bool alp = false;
+	if(x > y+x){
+		cout<<"rotten" + "apple"<<endl;
+	}
+	elseif(x < y){
+		cout<<"orange"+ "alp"<<endl;
+		if(x==5){
+			cout<<"orangeAgain"<<endl;
+		}
+	}
+	else{
+		cout<<"banana"<<"kela"<<endl;
+	}
+	int j = 0;
+	cout<<"enter value of j less than 10"<<endl;
+	cin>>j;
+	while(j<10){
+		if(true && true){
+			cout<<"abc"<<endl;
+		}
+		j=j+1;
+	}
+	cout<<j<<endl;
+}
